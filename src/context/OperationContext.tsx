@@ -24,9 +24,20 @@ export function OperationProvider({ children }: OperationProviderInterface) {
   const [autoSolve, setAutoSolve] = useState<boolean>(true);
   const [operationResult, setOperationResult] = useState<number | string>();
 
+
   useEffect(() => {
     if (autoSolve) solveOperation()
-  }, [method, expression, precision])
+  }, [method, expression, precision, autoSolve])
+
+
+  const solveOperation = async () => {
+    if (expression && expression !== '') {
+      setIsLoading(true);
+      const result = await MathApiService.solveOperation({ expression, precision, method });
+      setOperationResult(result);
+      setIsLoading(false);
+    }
+  };
 
   const changeMethodHandler = async (method: string) => {
     setMethod(method)
@@ -43,15 +54,6 @@ export function OperationProvider({ children }: OperationProviderInterface) {
   const changePrecisionHandler = async (precision: number | undefined) => {
     setPrecision(precision)
   }
-
-  const solveOperation = async () => {
-    if (expression && expression !== '') {
-      setIsLoading(true);
-      const result = await MathApiService.solveOperation({ expression, precision, method });
-      setOperationResult(result);
-      setIsLoading(false);
-    }
-  };
 
   return (
     <OperationContext.Provider value={

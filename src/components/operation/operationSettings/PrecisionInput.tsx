@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import OperationContext from '../context/OperationContext';
+import OperationContext from '../../../context/OperationContext';
 
 export default function PrecisionInput() {
   const [error, setError] = useState<boolean>(false);
@@ -8,7 +8,7 @@ export default function PrecisionInput() {
     const { value } = e.target as { value: string }
     console.log(value)
     const precision = parseInt(value) ?? undefined;
-    if (!precision || precision >= 0 && precision < 21) {
+    if (!precision || (precision >= 0 && precision < 21)) {
       setError(false)
       changePrecisionHandler(precision)
     }

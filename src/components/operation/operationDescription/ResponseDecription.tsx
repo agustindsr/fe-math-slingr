@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import OperationContext from "../context/OperationContext"
+import OperationContext from "../../../context/OperationContext"
 
 export default function ResponseDecription() {
   const { operationResult } = useContext(OperationContext)

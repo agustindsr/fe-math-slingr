@@ -23,8 +23,8 @@ export default abstract class BaseHttpClient {
       method: 'post',
       body: JSON.stringify(payload)
     }
-    console.log(postRequestConfiguration)
     const request = new Request(this.construcUrl(method, this.baseUrl), postRequestConfiguration)
+    console.log(request)
     return await fetch(request)
   }
 

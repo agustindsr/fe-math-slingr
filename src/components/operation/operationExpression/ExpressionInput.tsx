@@ -1,8 +1,8 @@
 import React, { useContext, useRef, useState } from 'react'
-import OperationContext from '../context/OperationContext';
+import OperationContext from '../../../context/OperationContext';
 import Operations from './Operations';
 
-export default function Expression() {
+export default function ExpressionInput() {
 
   const { expression, changeExpressionHandler } = useContext(OperationContext);
   const [selectionStart, setSelectionStart] = useState<number | null>(null);
@@ -30,6 +30,14 @@ export default function Expression() {
 
   return (
     <div>
+      <input type="text"
+        ref={ref}
+        required
+        className="form-control my-2"
+        aria-label="Text input with segmented dropdown button"
+        value={expression}
+        onBlur={changeBlurHandler}
+        onChange={changeExpressionEventHandler} placeholder="Math Expression Ej: 1.2*(2+4.5)" />
       <Operations
         expression={expression}
         setExpression={changeExpression}
@@ -37,14 +45,7 @@ export default function Expression() {
         endPosition={selectionEnd}
         setFocus={setFocus} />
 
-      <input type="text"
-        ref={ref}
-        required
-        className="form-control"
-        aria-label="Text input with segmented dropdown button"
-        value={expression}
-        onBlur={changeBlurHandler}
-        onChange={changeExpressionEventHandler} placeholder="Math Expression Ej: 1.2*(2+4.5)" />
+
     </div>
   )
 }

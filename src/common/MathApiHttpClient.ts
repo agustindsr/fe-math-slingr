@@ -15,7 +15,6 @@ class MathApiHttpClient extends BaseHttpClient {
 
   public async postAsync(method: string, payload: any, headers?: Record<string, string>): Promise<Response> {
 
-    console.log({ ...this.defaultRequestConfiguration, headers: { ...this.defaultRequestConfiguration.headers, ...headers } })
     const response = await super.post(method, payload, { ...this.defaultRequestConfiguration, headers: { ...this.defaultRequestConfiguration.headers, ...headers } });
 
     return response;

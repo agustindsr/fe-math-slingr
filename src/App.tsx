@@ -1,6 +1,6 @@
 import './App.css';
-import MathOperaration from './components/MathOperaration';
-import NavBar from './components/NavBar';
+import MathOperaration from './components/operation';
+import NavBar from './components/shared/NavBar';
 import { OperationProvider } from './context/OperationContext';
 
 function App() {

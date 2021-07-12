@@ -1,6 +1,6 @@
 import { useContext } from 'react'
-import OperationContext from '../context/OperationContext'
-import Spinner from './Spinner'
+import OperationContext from '../../../context/OperationContext'
+import Spinner from '../../shared/Spinner'
 
 export default function OperationResult() {
   const { operationResult, isLoading } = useContext(OperationContext)
